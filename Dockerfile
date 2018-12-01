@@ -1,8 +1,13 @@
-  FROM node:alpine
- LABEL product.maintainer="jcasado@lorasoftware.com" \
-       product.version="v1.0.0.FINAL" \
-       product.stage="development"
-   RUN mkdir -p /usr/src/app
-  COPY webapp.js /usr/src/app
+FROM node:alpine
+
+LABEL product.maintainer="jcasado@lorasoftware.com" \
+   product.version="v1.0.0.FINAL" \
+   product.stage="development"
+
+WORKDIR /usr/src/app
+
+COPY webapp.js ./
+
 EXPOSE 81
-   CMD [ "node", "/usr/src/app/webapp" ]
+
+CMD [ "node", "/usr/src/app/webapp" ]
